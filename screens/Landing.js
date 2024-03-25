@@ -1,14 +1,8 @@
 // Landing.js in ./screens/Landing.js
-import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
-  Text,
   View,
-  Button,
-  ScrollView,
-  TextInput,
-  Image,
-  TouchableOpacity,
+  
 } from "react-native";
 
 import { useNavigation } from '@react-navigation/native';

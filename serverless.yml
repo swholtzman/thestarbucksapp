@@ -1,0 +1,47 @@
+# serverless.yml
+
+service: thestarbucksapp
+
+provider:
+  name: aws
+  runtime: nodejs20.x  # Ensure this matches a version supported by AWS Lambda
+  region: ca-central-1
+  environment:
+    USER_TABLE: StarbucksApplicationUserTable
+
+functions:
+  createUser: 
+    handler: functions/createUser.handler
+    events:
+      - http:
+          path: users/create
+          method: post
+          cors: true
+  authenticateUser:
+    handler: functions/authenticateUser.handler
+    events:
+      - http:
+          path: users/authenticate
+          method: post
+          cors: true
+
+package:
+  excludeDevDependencies: true
+  exclude:
+    - node_modules/aws-sdk/**  # Exclude AWS SDK as it's provided by AWS Lambda environment
+    - screens/**  # Exclude screens directory
+    - components/**  # Exclude components directory
+
+resources:
+  Resources:
+    StarbucksUserTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: StarbucksApplicationUserTable
+        AttributeDefinitions:
+          - AttributeName: email
+            AttributeType: S
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
