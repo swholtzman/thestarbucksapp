@@ -2,7 +2,7 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
 
-import { ScrollView, View, StyleSheet } from "react-native";
+import { ScrollView, View, StyleSheet, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import Header from "../components/header";
@@ -11,17 +11,40 @@ import PasswordInput from "../components/passwordInput";
 import Forgettable from "../components/greenPressable";
 import StickyButton from "../components/greenButton";
 
+import config from "../config";
+
 export default function SignIn() {
     const { control, handleSubmit } = useForm();
     const navigation = useNavigation();
 
-    const onSubmit = data => {
+    const onSubmit = async (data) => {
         console.log('Form Data:', data);
-        // Sign-in logic goes here
+        try {
+            const response = await fetch(`${config.apiEndpoint}/users/authenticate`, { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+                throw new Error('Authentication failed');
+            }
+
+            const responseData = await response.json();
+            console.log("Authentication successful:", responseData);
+
+            // Navigate to the next screen or show success message
+            navigation.navigate("Main");
+        } catch (error) {
+            console.error("Error during sign-in:", error);
+            Alert.alert("Error", "Failed to sign in. Please check your credentials."); // Display a simple alert in case of an error
+        }
     };
 
-  return (
-    <>
+    return (
+        <>
             <ScrollView>
                 <Header title="Sign in to Rewards" iconName="close" functionHandler={() => navigation.goBack()} />
                 <View style={styles.inputContainer}>
@@ -34,10 +57,10 @@ export default function SignIn() {
                 </View>
             </ScrollView>
             <View style={styles.buttonContainer}>
-                <StickyButton title={"Sign in"} onPress={handleSubmit(onSubmit)} />
+                <StickyButton title={"Sign in"} functionHandler={handleSubmit(onSubmit)} />
             </View>
         </>
-  );
+    );
 }
 
 const styles = StyleSheet.create({

@@ -1,9 +1,8 @@
 // App.js
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FormProvider, useForm } from 'react-hook-form';
+
 
 import Landing from "./screens/Landing";
 import SignIn from "./screens/SignIn";
@@ -12,10 +11,12 @@ import Inbox from "./screens/Inbox";
 import Profile from "./screens/Profile";
 import Main from "./screens/Main";
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const methods = useForm(); // Initialize form methods
+
 
   return (
     <FormProvider {...methods}>

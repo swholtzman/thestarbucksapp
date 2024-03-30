@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text, Pressable } from 'react-native';
 import React from 'react';
 
-export default function GreenButton({ title, functionHandler }) {
+export default function GreenButton({ title, functionHandler, navigate }) {
   return (
     <View>
       <Pressable
