@@ -34,4 +34,6 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-#backend
+#backend zip files
+.serverless/thestarbucksapp.zip
+.serverless/thestarbucksapp.zip
