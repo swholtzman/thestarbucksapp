@@ -183,9 +183,9 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/thestarbucksapp/dev/1711437291020-2024-03-26T07:14:51.020Z/thestarbucksapp.zip"
+                "S3Key": "serverless/thestarbucksapp/dev/1711440287426-2024-03-26T08:04:47.426Z/createUser.zip"
               },
-              "Handler": "functions/createUser.handler",
+              "Handler": "lambda/functions/createUser.handler",
               "Runtime": "nodejs20.x",
               "FunctionName": "thestarbucksapp-dev-createUser",
               "MemorySize": 1024,
@@ -213,9 +213,9 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/thestarbucksapp/dev/1711437291020-2024-03-26T07:14:51.020Z/thestarbucksapp.zip"
+                "S3Key": "serverless/thestarbucksapp/dev/1711440287426-2024-03-26T08:04:47.426Z/authenticateUser.zip"
               },
-              "Handler": "functions/authenticateUser.handler",
+              "Handler": "lambda/functions/authenticateUser.handler",
               "Runtime": "nodejs20.x",
               "FunctionName": "thestarbucksapp-dev-authenticateUser",
               "MemorySize": 1024,
@@ -236,24 +236,24 @@
               "AuthenticateUserLogGroup"
             ]
           },
-          "CreateUserLambdaVersioncCIRjruVlzbbRlf2X5sRlKCiyZGpTJlzjiTke84o8Lc": {
-            "Type": "AWS::Lambda::Version",
-            "DeletionPolicy": "Retain",
-            "Properties": {
-              "FunctionName": {
-                "Ref": "CreateUserLambdaFunction"
-              },
-              "CodeSha256": "jIX3J8RYAC+mZ9bDOgJC+APq2qLGKcKhRCn7egAAWyc="
-            }
-          },
-          "AuthenticateUserLambdaVersionO7OpXZxhMFxIb1OmNOt9JYv7jMm3kbHPSRJgCLvXA0": {
+          "AuthenticateUserLambdaVersionnXZaJ7cu3NmKzs7aOBDEJzk2QvsVXEWiYmwCwfuxMY": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AuthenticateUserLambdaFunction"
               },
-              "CodeSha256": "jIX3J8RYAC+mZ9bDOgJC+APq2qLGKcKhRCn7egAAWyc="
+              "CodeSha256": "1/Age4kOSwaVUJNnv0IbUQzlr+AqDAgacY3JD+LlETk="
+            }
+          },
+          "CreateUserLambdaVersion8aW6Tcd6ft7XCSMzO6cBOKoHyxlqFFqhmOaeCpo": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "CreateUserLambdaFunction"
+              },
+              "CodeSha256": "1/Age4kOSwaVUJNnv0IbUQzlr+AqDAgacY3JD+LlETk="
             }
           },
           "ApiGatewayRestApi": {
@@ -489,7 +489,7 @@
               "AuthenticateUserLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1711437255002": {
+          "ApiGatewayDeployment1711440277943": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -607,22 +607,22 @@
               "Name": "sls-thestarbucksapp-dev-ServerlessDeploymentBucketName"
             }
           },
-          "CreateUserLambdaFunctionQualifiedArn": {
-            "Description": "Current Lambda function version",
-            "Value": {
-              "Ref": "CreateUserLambdaVersioncCIRjruVlzbbRlf2X5sRlKCiyZGpTJlzjiTke84o8Lc"
-            },
-            "Export": {
-              "Name": "sls-thestarbucksapp-dev-CreateUserLambdaFunctionQualifiedArn"
-            }
-          },
           "AuthenticateUserLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AuthenticateUserLambdaVersionO7OpXZxhMFxIb1OmNOt9JYv7jMm3kbHPSRJgCLvXA0"
+              "Ref": "AuthenticateUserLambdaVersionnXZaJ7cu3NmKzs7aOBDEJzk2QvsVXEWiYmwCwfuxMY"
             },
             "Export": {
               "Name": "sls-thestarbucksapp-dev-AuthenticateUserLambdaFunctionQualifiedArn"
+            }
+          },
+          "CreateUserLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "CreateUserLambdaVersion8aW6Tcd6ft7XCSMzO6cBOKoHyxlqFFqhmOaeCpo"
+            },
+            "Export": {
+              "Name": "sls-thestarbucksapp-dev-CreateUserLambdaFunctionQualifiedArn"
             }
           },
           "ServiceEndpoint": {
@@ -740,7 +740,7 @@
     "pluginsData": {},
     "functions": {
       "createUser": {
-        "handler": "functions/createUser.handler",
+        "handler": "lambda/functions/createUser.handler",
         "events": [
           {
             "http": {
@@ -768,15 +768,17 @@
           }
         ],
         "name": "thestarbucksapp-dev-createUser",
-        "package": {},
+        "package": {
+          "artifact": "/Users/samholtzman/Desktop/thestarbucksapp/.serverless/createUser.zip"
+        },
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "CreateUserLambdaVersioncCIRjruVlzbbRlf2X5sRlKCiyZGpTJlzjiTke84o8Lc"
+        "versionLogicalId": "CreateUserLambdaVersion8aW6Tcd6ft7XCSMzO6cBOKoHyxlqFFqhmOaeCpo"
       },
       "authenticateUser": {
-        "handler": "functions/authenticateUser.handler",
+        "handler": "lambda/functions/authenticateUser.handler",
         "events": [
           {
             "http": {
@@ -804,12 +806,14 @@
           }
         ],
         "name": "thestarbucksapp-dev-authenticateUser",
-        "package": {},
+        "package": {
+          "artifact": "/Users/samholtzman/Desktop/thestarbucksapp/.serverless/authenticateUser.zip"
+        },
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs20.x",
         "vpc": {},
-        "versionLogicalId": "AuthenticateUserLambdaVersionO7OpXZxhMFxIb1OmNOt9JYv7jMm3kbHPSRJgCLvXA0"
+        "versionLogicalId": "AuthenticateUserLambdaVersionnXZaJ7cu3NmKzs7aOBDEJzk2QvsVXEWiYmwCwfuxMY"
       }
     },
     "resources": {
@@ -847,26 +851,24 @@
         "$ref": "$[\"service\"][\"functions\"]"
       },
       "package": {
-        "excludeDevDependencies": true,
-        "exclude": [
-          "node_modules/aws-sdk/**",
-          "screens/**",
-          "components/**"
+        "individually": true,
+        "patterns": [
+          "!**",
+          "lambda/**"
         ],
         "artifactsS3KeyDirname": "serverless/thestarbucksapp/dev/code-artifacts",
-        "artifact": "/Users/samholtzman/Desktop/thestarbucksapp/.serverless/thestarbucksapp.zip",
-        "artifactDirectoryName": "serverless/thestarbucksapp/dev/1711437291020-2024-03-26T07:14:51.020Z"
+        "artifactDirectoryName": "serverless/thestarbucksapp/dev/1711440287426-2024-03-26T08:04:47.426Z"
       },
       "resources": {
         "$ref": "$[\"service\"][\"resources\"]"
       }
     },
     "layers": {},
-    "isDashboardMonitoringPreconfigured": false,
-    "artifact": "/Users/samholtzman/Desktop/thestarbucksapp/.serverless/thestarbucksapp.zip"
+    "isDashboardMonitoringPreconfigured": false
   },
   "package": {
-    "artifactDirectoryName": "serverless/thestarbucksapp/dev/1711437291020-2024-03-26T07:14:51.020Z",
-    "artifact": "thestarbucksapp.zip"
+    "individually": true,
+    "artifactDirectoryName": "serverless/thestarbucksapp/dev/1711440287426-2024-03-26T08:04:47.426Z",
+    "artifact": ""
   }
 }

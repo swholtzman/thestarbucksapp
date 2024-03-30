@@ -20,7 +20,7 @@ export default function SignIn() {
     const onSubmit = async (data) => {
         console.log('Form Data:', data);
         try {
-            const response = await fetch(`${config.apiEndpoint}/users/authenticate`, { // @TODO: Use  API endpoint here
+            const response = await fetch(`${config.apiEndpoint}/users/authenticate`, { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export default function SignIn() {
                 </View>
             </ScrollView>
             <View style={styles.buttonContainer}>
-                <StickyButton title={"Sign in"} onPress={handleSubmit(onSubmit)} />
+                <StickyButton title={"Sign in"} functionHandler={handleSubmit(onSubmit)} />
             </View>
         </>
     );

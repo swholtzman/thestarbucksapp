@@ -1,6 +1,7 @@
 
 // authenticateUser.js
-// const AWS = require('aws-sdk');
+
+const AWS = require('aws-sdk');
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 exports.handler = async (event) => {

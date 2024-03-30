@@ -1,7 +1,9 @@
 //config.js
 
-// @TODO: update with valid API endpoint
-export default {
-    apiEndpoint: "https://your-api-id.execute-api.region.amazonaws.com/dev",
-  };
+const config = {
+  apiEndpoint: 'https://5n6marir4h.execute-api.ca-central-1.amazonaws.com/dev',
+};
+
+export default config;
+
   

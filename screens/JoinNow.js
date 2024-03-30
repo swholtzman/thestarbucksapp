@@ -1,3 +1,5 @@
+// JoinNow.js
+
 import React, { useState } from "react";
 
 import { StyleSheet, View, Text, ScrollView } from "react-native";
@@ -29,7 +31,7 @@ export default function JoinNow() {
   const onSubmit = async (data) => {
     console.log("Form Data:", data);
     try {
-      const response = await fetch(`${config.apiEndpoint}/users/create`, { // @TODO: Use API endpoint here
+      const response = await fetch(`${config.apiEndpoint}/users/create`, { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -38,14 +40,14 @@ export default function JoinNow() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to create user');
+        throw new Error('Failed in JoinNow.java file');
       }
 
       const responseData = await response.json();
       console.log("User created successfully:", responseData);
 
-      // Navigate to sign-in page or show success message
-      navigation.navigate("SignIn");
+      // Navigate to main page or show success message
+      navigation.navigate('Main');
     } catch (error) {
       console.error("Error creating user:", error);
       // Handle error (show error message)
@@ -156,7 +158,7 @@ export default function JoinNow() {
         <View style={styles.greenButtonContainer}>
           <GreenButton
             title="Create Account"
-            onPress={handleSubmit(onSubmit)}
+            functionHandler={handleSubmit(onSubmit)}
           />
         </View>
         {/* GREEN SUBMISSION BUTTON ENDS */}

@@ -11,14 +11,14 @@ provider:
 
 functions:
   createUser: 
-    handler: functions/createUser.handler
+    handler: lambda/functions/createUser.handler
     events:
       - http:
           path: users/create
           method: post
           cors: true
   authenticateUser:
-    handler: functions/authenticateUser.handler
+    handler: lambda/functions/authenticateUser.handler
     events:
       - http:
           path: users/authenticate
@@ -26,11 +26,10 @@ functions:
           cors: true
 
 package:
-  excludeDevDependencies: true
-  exclude:
-    - node_modules/aws-sdk/**  # Exclude AWS SDK as it's provided by AWS Lambda environment
-    - screens/**  # Exclude screens directory
-    - components/**  # Exclude components directory
+  individually: true
+  patterns:
+    - '!**' # Exclude everything by default
+    - 'lambda/**' # Include all files in the lambda directory
 
 resources:
   Resources:

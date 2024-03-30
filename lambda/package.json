@@ -1,0 +1,25 @@
+{
+  "name": "lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "createUser.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swholtzman/thestarbucksapp.git"
+  },
+  "keywords": [
+    "aws-lambda"
+  ],
+  "author": "sholtzman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swholtzman/thestarbucksapp/issues"
+  },
+  "homepage": "https://github.com/swholtzman/thestarbucksapp#readme",
+  "dependencies": {
+    "uuid": "^9.0.1"
+  }
+}
